@@ -12,7 +12,8 @@ BeJomart
   
 ⠀  
 This project was generated with `Angular CLI version 15.2.0`
-
+  
+⠀  
 PROJECT TEAM
 ------------
 #### Our team members and their positions in the project:
