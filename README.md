@@ -1,4 +1,4 @@
-BeJomart - Google Solution Challange TOP 100
+BeJomart - Google Solution Challange 2023, TOP 100
 ========
 
 ![BeJomart](https://github.com/azikkw/BeJomart-GoogleSolutionChallange2023/blob/main/previews/bejomart.jpg)
