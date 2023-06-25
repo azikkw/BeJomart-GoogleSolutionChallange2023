@@ -91,11 +91,8 @@ HOW TO START CHAT
 
 HOW TO BOOK ITEM
 ----------------
-!!! A user can only book one item at a time.
-The product page has a `Booking` button. By clicking on it you can book the product. To remove the reservation, you need to click on the button `Cancel booking`.
+The product page has a `Booking` button. By clicking on it you can book the product. To remove the reservation, you need to click on the button `Cancel booking`. A user can only book one item at a time.
 ![Chat3](https://github.com/azikkw/BeJomart-GoogleSolutionChallange2023/blob/main/previews/image_2023-06-04_21-55-53.png)
-
----
 ⠀
 
 PROJECT TEAM
