@@ -8,8 +8,7 @@ BeJomart
 ### What we do?
 > The platform brings together individuals, organizations and communities around the world, providing them with a space to collaborate and work to create positive change.
 ### Our goal?
-> Using the power of collective action, BeJomart strives to create a world where everyone has access to the resources and support they need to thrive.  
-⠀  
+> Using the power of collective action, BeJomart strives to create a world where everyone has access to the resources and support they need to thrive.  ⠀  
 #### To create our project, we used technologies such as
 * Angular
 * Firebase
