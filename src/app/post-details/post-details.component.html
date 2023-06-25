@@ -1,0 +1,127 @@
+<div class="container">
+    <div class="favorites-post-details">
+        <div (click)="closeOTPModal($event)" class="modal-background">
+            <div class="otp-modal">
+                <img src="./assets/otp.png"/>
+                <p class="post-otp-modal-header">The owner needs to give you a code!</p>
+                <p class="post_otp-model-subtitle">Enter the code here</p>
+                <div class="post-otp-modal-inputs">
+                    <input [(ngModel)]="OTPValues[0]" (keyup)="moveToNextInput($event)" type="text" maxlength="1" class="otp-first-input"/>
+                    <input [(ngModel)]="OTPValues[1]" (keyup)="moveToNextInput($event)" type="text" maxlength="1" class="disabled"/>
+                    <input [(ngModel)]="OTPValues[2]" (keyup)="moveToNextInput($event)" type="text" maxlength="1" class="disabled"/>
+                    <input [(ngModel)]="OTPValues[3]" (keyup)="moveToNextInput($event)" type="text" maxlength="1" class="disabled"/>
+                    <input [(ngModel)]="OTPValues[4]" (keyup)="moveToNextInput($event)" type="text" maxlength="1" class="disabled"/>
+                    <input [(ngModel)]="OTPValues[5]" (keyup)="moveToNextInput($event)" type="text" maxlength="1" class="disabled"/>
+                </div>
+                <p class="otp-incorrect-message" id="otp-incorrect-message">Incorrect code! Please, try again.</p>
+            </div>
+            <div class="otp-success-modal">
+                <img src="./assets/otp.png"/>
+                <p class="post-otp-success-text" >Everything was successful! Enjoy it!</p>
+            </div>
+        </div>
+        <div class="post-details-images">
+            <app-carousel [postDetailImages]="sliderImages" class="app-carousel"></app-carousel>
+        </div>
+        <div class="post-details-right-side">
+            <div class="post-details-top">
+                <div class="post-details-top-text">
+                    <div class="text-top">
+                        <p class="post-date">Published on {{post.time.toDate() | date:'dd.MM.yyyy'}} at {{post.time.toDate() | date:'HH:mm'}}</p>
+                        <div [ngClass]="(specialStatus && post.ownerId != this.user.userID) ? 'favorite_back show' : 'favorite_back'" class="favorite_back">
+                            <div [ngClass]="isFavorite() ? 'add_to_fav chosen' : 'add_to_fav'" class="add_to_fav">
+                                <img src="../../assets/favorite.svg" class="fav_1" on-click="forFavorite($event)" alt="">
+                                <img src="../../assets/favirte_choosed.svg" class="fav_2" on-click="forFavorite($event)" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <p class="post-name">{{post.title}}</p>
+                    <div class="post-category">
+                        <p class="post-details-category-path" *ngFor="let category of post.category">{{category}}</p>
+                    </div>
+                    <div class="post-descr">
+                        Description:
+                        <p>{{post.description}}</p>
+                    </div>
+                </div>
+                <div class="text-bottom">
+                    <p class="post-amount"><span>Amount:</span> {{post.amount}}</p>
+                    <div class="right-side-buttons">
+                        <div [ngClass]="bookingInfoExpression()">
+                            <button class="book-button" (click)="handleBookingModel($event)">Booking
+                                <p class="booked-message"> Unfortunately, this item already booked. </p>
+                                <p class="booked-message-one"> Unfortunately, you have already booked another item. </p>
+                            </button>
+                            <button class="cancel-book-button" (click)="cancelBookingModal($event)">Cancel booking</button>
+                            <div (click)="cancelBookingAction($event)" class="book-modal-background">
+                                <div class="book-modal">
+                                    <p>Your booking guarantees the availability of the item.</p>
+                                    <div class="important-message">
+                                        <div class="important-message-image">
+                                            <img src="assets/important.png" alt="important"/>
+                                        </div>
+                                        <p> Ensure timely communication with the owner and arrange getting.</p>
+                                    </div>
+                                    <div class="book-modal-buttons">
+                                        <button *ngIf="!loading" (click)="cancelBookingAction($event)">Cancel</button>
+                                        <button *ngIf="!loading" class="button-success" (click)="bookItem($event)">Book now</button>
+                                        <button *ngIf="loading" class="image-loader"> <img class="loading" src="assets/loading.png"/></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div (click)="cancelBookingAction($event)" class="book-modal-background">
+                                <div class="cancel-book-modal">
+                                    <p>Are you sure you want to cancel your booking? Please choose one of the following options:</p>
+                                    <div class="book-modal-buttons">
+                                        <button *ngIf="!loading" (click)="cancelBookingAction($event)">Keep</button>
+                                        <button *ngIf="!loading" class="button-success" (click)="cancelBookingItem()">Confirm cancellation</button>
+                                        <button *ngIf="loading" class="image-loader"> <img class="loading" src="assets/loading.png"/></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div [ngClass]="classExpression()">
+                            <button (click)="sendCodeToOwner($event)" class="post-details-get-button">Get it right now</button>
+                            <app-pay-button *ngIf="isDonate" [credit]="{price: post.price, donationID: post.donationID, postID: postId, takerID: this.user.uniqID, type: 'B&D'}"></app-pay-button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="right_container">
+        <div class="post-details-bottom">
+            <div class="bottom-top">
+                <p id="title">Owner information</p>
+                <div class="post_owner_info">
+                    <img class="avatar_of_owner" *ngIf="owner.avatar != ''" src="{{owner.avatar}}" alt="">
+                    <div *ngIf="owner.avatar == ''" class="no_avatar_owner">
+                        <img src="/assets/avatar.png" alt="">
+                    </div>
+                    {{owner.fName}} {{owner.lName}}
+                </div>
+            </div>
+            <div [ngClass]="ownerInfoExpression()" class="post-details-bottom-text">
+                <p id="subtitle">Owner contacts</p>
+                <p style="margin-bottom: 6px;">
+                    <span class="material-symbols-outlined">call</span>
+                    {{post.phone}}
+                </p>
+                <p>
+                    <span class="material-symbols-outlined">location_on</span>
+                    Kazakhstan, {{post.location}}
+                </p>
+                <div *ngIf="chatContains()" class="chat_btn" (click)="chatWithUser(true)">Continue chat</div>
+                <div *ngIf="!chatContains()" class="chat_btn" (click)="chatWithUser(false)">Start chat</div>
+            </div>
+        </div>
+        <div [ngClass]="ownerInfoExpression()" class="post-details-bottom" style="margin-top: 15px !important;">
+            <p id="title2">Location</p>
+            <p style="margin-top: 5px; margin-left: 0; margin-bottom: 18px">
+                <span class="material-symbols-outlined">location_on</span>
+                Kazakhstan, {{post.location}}
+            </p>
+            <div id="map"></div>
+        </div>
+    </div>
+</div>

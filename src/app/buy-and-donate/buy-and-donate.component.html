@@ -1,0 +1,74 @@
+<div class="ad">
+    <div class="catalog">
+        <span>Catalog</span>
+        <ul class="catalog_item">
+            <li *ngFor="let category of categories">
+                <div class="catalog_top main" (click)="filterByCategory($event)">
+                    <p>{{category.name}}</p>
+                    <img class ="sub_selector" [ngClass]="category.subCategories && category.subCategories.length > 0 ? 'sub_selector have' : 'sub_selector'" src="../../assets/arrow.svg"/>
+                </div>
+                <ul *ngIf="category.subCategories && category.subCategories.length > 0" class="sub_catalog">
+                    <li *ngFor="let subCategory of category.subCategories">
+                        <div class="catalog_top middle" (click)="filterByCategory($event)">
+                            <p>{{subCategory.name}}</p>
+                            <img class="sub_selector" [ngClass]="subCategory.subCategories && subCategory.subCategories.length > 0 ? 'sub_selector have' : 'sub_selector'" src="../../assets/arrow.svg"/>
+                        </div>
+                        <ul *ngIf="subCategory.subCategories && subCategory.subCategories.length > 0" class="sub_sub_catalog">
+                            <li *ngFor="let subCategorySub of subCategory.subCategories">
+                                <div class="catalog_top child" (click)="filterByCategory($event)">
+                                    <p>{{subCategorySub.name}}</p>
+                                    <img class="sub_selector" src="../../assets/arrow.svg"/>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="favorites_back">
+        <div class="search_input">
+            <input type="text" (keyup)="search($event)" placeholder="Search by title">
+            <img src="../../assets/search.svg" alt="">
+        </div>
+        <div class="sort">
+            <div class="sorting_btn">
+                Sort by:
+                <select class="sort_type">
+                    <option>Top</option>
+                    <option>Recent</option>
+                </select>
+            </div>
+        </div>
+        <div class="loading">
+            <img *ngIf="!loaded" src="../../assets/loading.gif" alt="">
+        </div>
+        <div *ngIf="loaded" class="list">
+            <div class="item_back" *ngFor="let bad of buyAndDonates">
+                <div [ngClass]="isFavorite(bad.id) ? 'item chosen' : 'item'" *ngIf="bad.visibility === 'active'" class="item">
+                    <a href="/buy-and-donate/{{bad.id}}}" class="left">
+                        <div class="image">
+                            <img src="{{bad.mainIMG}}" alt="">
+                        </div>
+                        <div class="info_ad">
+                            <div class="top_info">
+                                <div class="title">{{bad.title}}</div>
+                                <div class="category_type">
+                                    <p *ngFor="let category of bad.category">{{category}}<span>/</span></p>
+                                </div>
+                            </div>
+                            <div class="location">Kazakhstan, {{bad.location}}</div>
+                        </div>
+                    </a>
+                    <div class="right">
+                        <div class="count">{{bad.price}}₸</div>
+                        <div class="add_to_fav">
+                            <img src="../../assets/favorite.svg" class="fav_1" on-click="forFavorite($event, bad)" alt="">
+                            <img src="../../assets/favirte_choosed.svg" class="fav_2" on-click="forFavorite($event, bad)" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

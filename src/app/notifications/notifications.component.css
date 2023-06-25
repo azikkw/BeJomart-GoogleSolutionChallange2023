@@ -1,0 +1,54 @@
+.notification{
+    width: inherit;
+    height: 100px;
+    background: #FFFFFF;
+    border: 1px solid #E2E2E2;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    padding: 0 20px;
+    margin: 0 8% 15px;
+}
+
+.notification-account-image{
+    height: 85px;
+    width: 85px;
+    border-radius: 50%;
+}
+
+.notification-account-name{
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 3px !important;
+}
+.not_mess
+{
+    font-size: 15px;
+}
+
+.notification-text{
+    height: inherit;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 10px;
+}
+
+.notification-text p{
+    margin: 0;
+}
+
+.notification-right-side{
+    height: inherit;
+    margin: 30px 10px 0;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    font-size: 14.5px;
+}
+.notification-left-side{
+    display: flex;
+    align-items: center;
+}

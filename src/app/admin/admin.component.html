@@ -1,0 +1,17 @@
+<div class="admin">
+    <div class="admin-menu">
+        <a routerLink="posts-admin" (click)="selectMenu($event)" class="admin-menu-selected">Posts</a>
+        <a routerLink="donations-admin" (click)="selectMenu($event)">Donations</a>
+        <a routerLink="buy-and-donate-admin" (click)="selectMenu($event)">B&D</a>
+        <a routerLink="special-users" (click)="selectMenu($event)">Special users</a>
+    </div>
+    <div class="admin-content">
+        <div class="search_input">
+            <input type="text" placeholder="Search by title">
+            <img src="../../assets/search.svg" alt="">
+        </div>
+        <div class="container">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

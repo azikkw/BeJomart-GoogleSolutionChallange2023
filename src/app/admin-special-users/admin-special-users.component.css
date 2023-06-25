@@ -1,0 +1,141 @@
+.admin-special-users-list
+{
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+}
+.admin-special-user
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 100px;
+
+    border: 1px solid #E2E2E2;
+    border-radius: 15px;
+
+    padding: 0 20px;
+}
+.admin-special-user-left-side, .admin-special-user-right-side
+{
+    display: flex;
+    align-items: center;
+}
+.admin-special-user-main-image
+{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+
+    margin-right: 18px;
+}
+.admin-special-user-main-image img
+{
+    width: 100%;
+    height: 100%;
+
+    border-radius: 50%;
+    object-fit: cover;
+}
+.admin-special-user-name
+{
+    font-size: 21px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+.time
+{
+    color: #6B6B6B;
+    font-size: 15px;
+}
+
+.admin-special-user-right-side img
+{
+    width: 21px;
+
+    background: #3A47B9;
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    margin-right: 10px;
+    padding: 7px;
+}
+.accept-button, .reject-button
+{
+    width: 100px;
+    height: 35px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 7px;
+    background: #ff5353;
+    color: #fff;
+}
+.accept-button
+{
+    margin-right: 10px;
+    background: #68b668;
+}
+
+
+.modal-background, .modal-background-cancel
+{
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+.modal-background.open, .modal-background-cancel.open
+{
+    display: flex;
+}
+.continue-button
+{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background: #FFFFFF;
+    border-radius: 18px;
+    padding: 38px 33px 28px;
+    font-size: 15px;
+}
+.modal-background p
+{
+    font-size: 16px;
+}
+.modal-background, .continue-button, .modal-background-cancel
+{
+    justify-content: center;
+    align-items: center;
+}
+.continue-button div
+{
+    display: flex;
+    margin-top: 20px;
+}
+.continue-button button
+{
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #e2e2e2;
+    border-radius: 7px;
+    margin: 4px;
+    background: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+}
+.continue-button button:hover
+{
+    border: 1px solid #3A47B9;
+    color: #3A47B9;
+}
