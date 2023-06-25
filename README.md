@@ -48,7 +48,7 @@ You can also import our project using the `git clone` command. To do this, you n
 
 Next you will need to enter the following:
       
-      git clone https://github.com/aknurkappar/google-solutions-1
+      git clone https://github.com/azikkw/BeJomart-GoogleSolutionChallange2023.git
 
 #### 2. The path in the command prompt
 Specify the path to the folder where you unpacked the ZIP archive in the command prompt.
